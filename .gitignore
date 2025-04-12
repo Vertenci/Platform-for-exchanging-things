@@ -9,8 +9,8 @@ __pycache__/
 
 .venv
 node_modules/
-platformforexchangingthings/platformforexchangingthings/
-platformforexchangingthings/platformforexchangingthings/settings.py
+
+
 
 # C extensions
 *.so
