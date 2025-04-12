@@ -1,0 +1,13 @@
+{% extends 'ads/layout.html' %}
+{% block title %}Добавление объявления{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4">Добавить объявление</h2>
+    <form method="post" enctype="multipart/form-data" class="shadow p-4 rounded bg-light">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Продолжить</button>
+    </form>
+</div>
+{% endblock %}

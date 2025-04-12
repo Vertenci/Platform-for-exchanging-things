@@ -1,0 +1,12 @@
+{% extends 'ads/layout.html' %}
+{% block title %}Создание предложения обмена{% endblock %}
+
+{% block content %}
+<h3>Создание предложения обмена</h3>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Создать</button>
+</form>
+<a href="{% url 'ads_list' %}" class="btn btn-secondary mt-3">Вернуться</a>
+{% endblock %}

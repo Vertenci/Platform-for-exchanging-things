@@ -1,0 +1,81 @@
+.ad-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin: 20px;
+    justify-content: start;
+}
+
+.ad-container .ad-card {
+    flex: 0 0 calc(33.333% - 20px);
+    border: 1px solid #fff;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: transparent;
+    transition: border-color 0.2s;
+}
+
+.ad-container .ad-card:hover {
+    border-color: #8a2be2;
+}
+
+.ad-container .ad-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.ad-container .meta {
+    display: flex;
+    flex-direction: column;
+    font-weight: 400;
+    font-size: 14px;
+    color: #ddd;
+}
+
+.ad-container .ad-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.ad-container .buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    gap: 10px
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+    justify-content: center;
+    align-items: center;
+}
+
+.current-page {
+    padding: 10px 15px;
+    margin: 0 5px;
+    border-radius: 5px;
+    background-color: #8a2be2;
+    color: white;
+    font-weight: bold;
+}
+
+.page-link {
+    padding: 10px 15px;
+    margin: 0 5px;
+    border-radius: 5px;
+    background-color: transparent;
+    color: #8a2be2;
+    text-decoration: none;
+    border: 1px solid #8a2be2;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.page-link:hover {
+    background-color: #8a2be2;
+    color: white;
+}

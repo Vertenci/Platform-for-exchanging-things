@@ -1,0 +1,23 @@
+{% extends 'ads/layout.html' %}
+{% block title %}Предварительный просмотр{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4">Предварительный просмотр объявления</h2>
+    <div class="card shadow p-4">
+        <h3><strong>Название:</strong> {{ ad.title }}</h3>
+        <p><strong>Описание:</strong> {{ ad.description }}</p>
+        <p><strong>Категория:</strong> {{ ad.category }}</p>
+        <p><strong>Состояние:</strong> {{ ad.condition }}</p>
+        {% if ad.image_url %}
+            <p><strong>Изображение:</strong></p>
+            <img src="{{ ad.image_url.url }}" alt="Ad Image" class="img-fluid rounded">
+        {% endif %}
+    </div>
+    <form method="post" class="mt-4">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-success">Подтвердить</button>
+        <a href="{% url 'create_ad' %}" class="btn btn-secondary">Назад</a>
+    </form>
+</div>
+{% endblock %}

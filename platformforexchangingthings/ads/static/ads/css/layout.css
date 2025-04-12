@@ -1,0 +1,54 @@
+body {
+    background-color: #000;
+    color: #fff;
+}
+
+nav {
+    background-color: blueviolet;
+    padding: 20px;
+}
+
+.dropdown-menu {
+    background-color: blueviolet;
+}
+.dropdown-item {
+    color: white;
+}
+.dropdown-item:hover {
+    background-color: darkviolet;
+}
+
+
+
+.filter-content-container {
+    display: flex;
+    margin: 20px;
+}
+
+.filter-container {
+    flex: 0 0 20%;
+    margin-right: 20px;
+}
+.filter-container .form-control {
+    margin-bottom: 10px;
+}
+
+.ad-container {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.ad-card {
+    flex: 1 1 calc(33.333% - 20px);
+    border: 1px solid #fff;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: transparent;
+    transition: border-color 0.2s;
+}
+
+.ad-card:hover {
+    border-color: #8a2be2;
+}

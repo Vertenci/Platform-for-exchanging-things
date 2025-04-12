@@ -1,0 +1,74 @@
+{% extends 'ads/layout.html' %}
+{% block title %}Объявления{% endblock %}
+
+{% block content %}
+    <div class="filter-content-container">
+        <div class="filter-container">
+            <h3>Фильтры</h3>
+            <form method="GET" class="form-inline mb-3">
+                <input type="text" name="keyword" placeholder="Поиск..."
+                       class="form-control mr-2" value="{{ request.GET.keyword }}">
+
+                <select name="category" class="form-control mr-2">
+                    <option value="">Все категории</option>
+                    {% for category in categories %}
+                        <option value="{{ category }}" {% if category == request.GET.category %}selected{% endif %}>
+                            {{ category }}
+                        </option>
+                    {% endfor %}
+                </select>
+
+                <select name="condition" class="form-control mr-2">
+                    <option value="">Все состояния</option>
+                    {% for condition in conditions %}
+                        <option value="{{ condition }}" {% if condition == request.GET.condition %}selected{% endif %}>
+                            {{ condition }}
+                        </option>
+                    {% endfor %}
+                </select>
+
+                <button type="submit" class="btn btn-primary">Фильтровать</button>
+                <a href="{% url 'ads_list' %}" class="btn btn-secondary ml-2">Сбросить фильтры</a>
+            </form>
+        </div>
+
+        <div class="ad-container">
+            {% if ads %}
+                {% for ad in ads %}
+                    <div class="ad-card">
+                        <img src="{{ ad.image_url.url }}" alt="{{ ad.title }}" class="ad-image">
+                        <div class="meta">
+                            <div class="ad-id">Номер товара: {{ ad.id }}</div>
+                            <div class="ad-title">Название: {{ ad.title }}</div>
+                            <div class="ad-description">Описание: {{ ad.description }}</div>
+                            <div class="ad-user">Пользователь: {{ ad.user }}</div>
+                            <div class="ad-category">Категория: {{ ad.category }}</div>
+                            <div class="ad-condition">Состояние: {{ ad.condition }}</div>
+                            <div class="ad-created_at">Создано: {{ ad.created_at }}</div>
+                            <div class="buttons">
+                                {% if request.user == ad.user %}
+                                    <a href="{% url 'edit_ad' ad.id %}" class="btn btn-primary">Редактировать</a>
+                                    <a href="{% url 'delete_ad' ad.id %}" class="btn btn-danger">Удалить</a>
+                                {% else %}
+                                    <a href="{% url 'create_exchange_proposal' ad.id %}" class="btn btn-secondary">Создать обмен</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="pagination">
+        {% for page in page_obj.paginator.page_range %}
+            {% if page_obj.number == page %}
+                <span class="current-page">{{ page }}</span>
+            {% else %}
+                <a href="?page={{ page }}&keyword={{ request.GET.keyword }}&category={{ request.GET.category }}&condition={{ request.GET.condition }}" class="page-link">
+                    {{ page }}
+                </a>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endblock %}
